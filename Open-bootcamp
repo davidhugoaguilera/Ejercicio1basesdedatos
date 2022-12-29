@@ -1,0 +1,25 @@
+import sqlite3
+
+db_connection = sqlite3.connect('ej1.db')
+db_cursor = db_connection.cursor()
+
+db_cursor.execute("Create table Alumnos(id INT,Nombre TEXT, Apellido TEXT)")
+
+db_cursor.execute("INSERT INTO Alumnos VALUES(1,'Lionel', 'Messi')")
+db_cursor.execute("INSERT INTO Alumnos VALUES(2,'Emiliano', 'Martinez')")
+db_cursor.execute("INSERT INTO Alumnos VALUES(3,'Julian', 'Alvarez')")
+db_cursor.execute("INSERT INTO Alumnos VALUES(4,'Nicolas', 'Otamendi')")
+db_cursor.execute("INSERT INTO Alumnos VALUES(5,'Angel', 'Di Maria')")
+db_cursor.execute("INSERT INTO Alumnos VALUES(6,'Cuti', 'Romero')")
+db_cursor.execute("INSERT INTO Alumnos VALUES(7,'Rodrigo', 'De Paul')")
+db_cursor.execute("INSERT INTO Alumnos VALUES(8,'Lautaro', 'Martinez')")
+
+db_connection.commit()
+
+db_cursor.execute("SELECT * FROM Alumnos WHERE Nombre = 'Lionel'")
+
+filas = db_cursor.fetchall()
+
+print(filas)
+
+db_connection.close()
